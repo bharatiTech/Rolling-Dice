@@ -35,13 +35,16 @@ button {
 .dice-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 }
 
-.dice {
-  border: 1px solid #fff;
+.diceGrid {
   background-color: #fff;
+	-webkit-box-shadow: 0px 1px 20px -5px #fff;
+  -moz-box-shadow: 0px 1px 20px -5px #fff;
+  box-shadow: 0px 1px 20px -5px #fff;
+	border-radius: 10px;
   padding: 10px;
   width: 150px;
   height: 150px;
@@ -49,6 +52,7 @@ button {
   grid-template-columns: 30px 30px 30px;
   grid-auto-rows: 30px;
   grid-gap: 20px;
+  animation: rollTheDice 300ms linear;
 }
 
 .dice1 {
@@ -93,7 +97,111 @@ button {
     "d e f";
 }
 
-.dot {
+.dotGrid {
   background-color: #000;
   border-radius: 100%;
+}
+
+@keyframes rollTheDice {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* flex approach: */
+.dice-container-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.dice {
+  padding: 10px;
+  border: 1px solid white;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 20px -5px #fff;
+  -moz-box-shadow: 0px 1px 20px -5px #fff;
+  box-shadow: 0px 1px 20px -5px #fff;
+  border-radius: 10px;
+  width: 104px;
+  height: 104px;
+  animation: rollTheDice 0.8s ease-out;
+}
+
+.dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.diceRoot {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-basis: 30%;
+  width: 800px;
+}
+
+.dice_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice_2 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice_2 .dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.dice_3 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice_3 .dot:nth-of-type(1) {
+  align-self: flex-end;
+}
+.dice_3 .dot:nth-of-type(2) {
+  align-self: center;
+}
+
+.dice_4 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dice_4 > .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dice_5 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice_5 > .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dice_5 > .columnMid {
+  display: flex;
+  align-items: center;
+}
+
+.dice_6 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice_6 > .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
