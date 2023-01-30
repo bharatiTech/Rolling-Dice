@@ -11,8 +11,13 @@ numberOfDiceInput.addEventListener("change", (event) => {
 });
 
 rollDiceButton.addEventListener("click", () => {
-  numberOfDiceInput.value = 0;
-  let object = new RollingDice(diceContainer, numberOfDice);
-  object.roll();
-  numberOfDice = 0;
+  let previous = document.getElementById("innerRoot");
+
+  if (previous !== null) {
+    previous.remove();
+  }
+
+  let object = new RollingDice(numberOfDice);
+  let diceDiv = object.roll();
+  diceContainer.appendChild(diceDiv);
 });

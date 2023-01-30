@@ -1,6 +1,5 @@
 export default class RollingDice {
-  constructor(diceContainer, numberOfDice) {
-    this.diceContainer = diceContainer;
+  constructor(numberOfDice) {
     this.numberOfDice = numberOfDice;
     this.areaNumMap = {
       0: "a",
@@ -15,6 +14,10 @@ export default class RollingDice {
     };
   }
   roll() {
+    let diceRoot = document.createElement("div");
+    diceRoot.classList.add("dice-container");
+    diceRoot.setAttribute("id", "innerRoot");
+
     if (this.numberOfDice < 100 && this.numberOfDice > 0) {
       let arr = new Uint8Array(this.numberOfDice);
       crypto.getRandomValues(arr);
@@ -30,9 +33,10 @@ export default class RollingDice {
           die.style.gridArea = this.areaNumMap[i];
           dice.appendChild(die);
         }
-        this.diceContainer.appendChild(dice);
+
+        diceRoot.appendChild(dice);
       });
     }
-    this.numberOfDice = 0;
+    return diceRoot;
   }
 }
